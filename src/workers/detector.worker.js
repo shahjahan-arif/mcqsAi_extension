@@ -7,6 +7,7 @@
  */
 
 import { structuralScan } from '../detection/structural-scanner.js';
+import { patternMatching } from '../detection/pattern-matcher.js';
 
 /**
  * Handle messages from main thread
@@ -24,13 +25,17 @@ self.onmessage = (event) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(domSnapshot.html, 'text/html');
 
-    // Run structural scan (Layer 1)
+    // Run detection layers
     const structuralScore = structuralScan(doc);
+    const patternScore = patternMatching(doc);
 
     // Send results back to main thread
     self.postMessage({
       success: true,
-      structuralScore,
+      scores: {
+        structural: structuralScore,
+        pattern: patternScore
+      },
       timestamp: Date.now()
     });
   } catch (error) {
