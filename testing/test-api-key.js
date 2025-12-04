@@ -5,7 +5,7 @@
  * Verifies that the Gemini API key is working correctly
  */
 
-import { GeminiClient } from './src/api/gemini-client.js';
+import { GeminiClient } from '../src/api/gemini-client.js';
 
 async function testAPIKey() {
   const apiKey = 'AIzaSyC3KNHIKKXGYhnjtmJ9o2FYTTLWZ6pXRj8';

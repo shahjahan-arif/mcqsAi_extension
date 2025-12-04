@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Solver AI</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      width: 400px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f5;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    
+    .header p {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+    
+    .content {
+      padding: 20px;
+    }
+    
+    .status {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border-left: 4px solid #4CAF50;
+    }
+    
+    .status.error {
+      border-left-color: #f44336;
+    }
+    
+    .status-label {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+    
+    .status-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary {
+      background: #4CAF50;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #45a049;
+    }
+    
+    .btn-secondary {
+      background: #f0f0f0;
+      color: #333;
+    }
+    
+    .btn-secondary:hover {
+      background: #e0e0e0;
+    }
+    
+    .settings-section {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    
+    .settings-section h3 {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .setting-item {
+      margin-bottom: 10px;
+    }
+    
+    .setting-item label {
+      display: block;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+    
+    .setting-item input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    
+    .stats {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .stat-row:last-child {
+      border-bottom: none;
+    }
+    
+    .stat-label {
+      color: #666;
+    }
+    
+    .stat-value {
+      font-weight: 500;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🤖 Quiz Solver AI</h1>
+    <p>Powered by Gemini 2.5 Flash</p>
+  </div>
+  
+  <div class="content">
+    <!-- Status Section -->
+    <div class="status" id="status">
+      <div class="status-label">Status</div>
+      <div class="status-value">Initializing...</div>
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="button-group">
+      <button class="btn-primary" id="detectBtn">Detect Quiz</button>
+      <button class="btn-secondary" id="settingsBtn">Settings</button>
+    </div>
+    
+    <!-- Settings Section (Hidden by default) -->
+    <div class="settings-section" id="settingsSection" style="display: none;">
+      <h3>API Configuration</h3>
+      <div class="setting-item">
+        <label>Gemini API Key</label>
+        <input type="password" id="apiKeyInput" placeholder="Enter your API key">
+      </div>
+      <div class="button-group">
+        <button class="btn-primary" id="saveBtn">Save</button>
+        <button class="btn-secondary" id="cancelBtn">Cancel</button>
+      </div>
+    </div>
+    
+    <!-- Statistics Section -->
+    <div class="stats" id="stats" style="display: none;">
+      <h3 style="margin-bottom: 10px;">Statistics</h3>
+      <div class="stat-row">
+        <span class="stat-label">Cache Hits</span>
+        <span class="stat-value" id="cacheHits">0</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Cache Misses</span>
+        <span class="stat-value" id="cacheMisses">0</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Hit Rate</span>
+        <span class="stat-value" id="hitRate">0%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Avg Response</span>
+        <span class="stat-value" id="avgResponse">0ms</span>
+      </div>
+    </div>
+  </div>
+  
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

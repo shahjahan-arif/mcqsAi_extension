@@ -5,7 +5,7 @@
  * Tests API client and answer retriever (without cache)
  */
 
-import { GeminiClient } from './src/api/gemini-client.js';
+import { GeminiClient } from '../src/api/gemini-client.js';
 
 const apiKey = 'AIzaSyC3KNHIKKXGYhnjtmJ9o2FYTTLWZ6pXRj8';
 
