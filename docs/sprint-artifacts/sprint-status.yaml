@@ -1,0 +1,73 @@
+# generated: 2025-12-04
+# project: mcqsAi_extension
+# project_key: mcqsai
+# tracking_system: file-system
+# story_location: docs/sprint-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic exists in epic file but not contexted
+#   - contexted: Epic tech context created (required before drafting stories)
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - drafted: Story file created in stories folder
+#   - ready-for-dev: Draft approved and story context created
+#   - in-progress: Developer actively working on implementation
+#   - review: Under SM review (via code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - completed: Retrospective has been done
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epics should be 'contexted' before stories can be 'drafted'
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically drafts next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', SM reviews, then Dev moves to 'done'
+
+generated: 2025-12-04
+project: mcqsAi_extension
+project_key: mcqsai
+tracking_system: file-system
+story_location: docs/sprint-artifacts
+
+development_status:
+  # EPIC 1: Foundation - Universal Detection Engine
+  epic-1: contexted
+  1-1-implement-structural-scan-detection-layer: ready-for-dev
+  1-2-implement-pattern-matching-detection-layer: ready-for-dev
+  1-3-implement-context-analysis-detection-layer: ready-for-dev
+  1-4-implement-confidence-scoring-and-decision-logic: ready-for-dev
+  epic-1-retrospective: optional
+
+  # EPIC 2: AI Integration & Caching - Answer Generation
+  epic-2: contexted
+  2-1-implement-indexeddb-caching-system: ready-for-dev
+  2-2-implement-gemini-api-integration: ready-for-dev
+  2-3-implement-cache-first-answer-retrieval: ready-for-dev
+  2-4-implement-rate-limiting-management: ready-for-dev
+  2-5-implement-request-queuing-and-retry-logic: ready-for-dev
+  epic-2-retrospective: optional
+
+  # EPIC 3: Performance & Adaptation - Adaptive Performance
+  epic-3: contexted
+  3-1-implement-device-detection-and-mode-switching: ready-for-dev
+  3-2-implement-web-worker-for-parallel-detection: ready-for-dev
+  3-3-implement-mobile-speed-mode-optimization: ready-for-dev
+  epic-3-retrospective: optional
+
+  # EPIC 4: User Interface - Answer Display
+  epic-4: contexted
+  4-1-implement-answer-display-ui-component: ready-for-dev
+  4-2-implement-explanation-and-feedback-features: ready-for-dev
+  epic-4-retrospective: optional
+
+  # EPIC 5: Learning System - User Training (Optional)
+  epic-5: contexted
+  5-1-implement-user-quiz-marking-and-pattern-extraction: ready-for-dev
+  5-2-implement-user-pattern-priority-detection: ready-for-dev
+  epic-5-retrospective: optional
