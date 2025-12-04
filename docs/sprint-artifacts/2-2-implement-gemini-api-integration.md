@@ -190,27 +190,27 @@ try {
 
 ## Tasks / Subtasks
 
-- [ ] Create API client module: `src/api/gemini-client.js`
-  - [ ] Implement GeminiClient class
-  - [ ] Implement API call logic
-  - [ ] Implement response parsing
-  - [ ] Implement error handling
+- [x] Create API client module: `src/api/gemini-client.js`
+  - [x] Implement GeminiClient class
+  - [x] Implement API call logic
+  - [x] Implement response parsing
+  - [x] Implement error handling
 
-- [ ] Create error classes: `src/api/errors.js`
-  - [ ] APIError class
-  - [ ] TimeoutError class
-  - [ ] ParseError class
+- [x] Create error classes: `src/api/errors.js`
+  - [x] APIError class
+  - [x] TimeoutError class
+  - [x] ParseError class
 
-- [ ] Create unit tests: `tests/api/gemini-client.test.js`
-  - [ ] Test API calls with mock responses
-  - [ ] Test timeout handling
-  - [ ] Test retry logic
-  - [ ] Test error handling
+- [x] Create unit tests: `tests/api/gemini-client.test.js`
+  - [x] Test API calls with mock responses
+  - [x] Test timeout handling
+  - [x] Test retry logic
+  - [x] Test error handling
 
-- [ ] Integration tests
-  - [ ] Test with real Gemini API (optional)
-  - [ ] Test various question types
-  - [ ] Test error scenarios
+- [x] Integration tests
+  - [x] Test with real Gemini API (optional)
+  - [x] Test various question types
+  - [x] Test error scenarios
 
 ## Dev Notes
 

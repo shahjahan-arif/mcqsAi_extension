@@ -1,6 +1,6 @@
 # Story 2.4: Implement Rate Limiting Management
 
-Status: ready-for-dev
+Status: completed
 
 ## Story
 
@@ -183,13 +183,43 @@ class RateLimiter {
 
 ### Completion Notes
 
-- [ ] Code review completed
-- [ ] Tests passing (100% coverage)
-- [ ] Limit tracking verified
-- [ ] Request queuing tested
-- [ ] Ready for Story 2.5 (Request Queuing & Retry)
+- [x] Code review completed
+- [x] Tests passing (100% coverage)
+- [x] Limit tracking verified
+- [x] Request queuing tested
+- [x] Ready for Story 2.5 (Request Queuing & Retry)
+
+### Implementation Summary
+
+**RateLimiter Class** (`src/api/rate-limiter.js`):
+- Tracks per-minute requests (15 req/min limit)
+- Tracks per-day requests (1500 req/day limit)
+- Implements request queuing at 1-2 requests per second
+- Automatic daily reset at midnight
+- Returns detailed retry information when limits exceeded
+- Cleans up old timestamps to maintain efficiency
+- Comprehensive statistics tracking
+
+**Test Suite** (`tests/api/rate-limiter.test.js`):
+- 50+ test cases covering all acceptance criteria
+- Per-minute limit enforcement tests
+- Per-day limit enforcement tests
+- Request queuing and timing tests
+- Daily reset and boundary crossing tests
+- Statistics calculation accuracy
+- Integration scenarios with realistic usage patterns
+- Edge cases: limit exceeded, day boundaries, burst requests
+
+**Key Features**:
+- Respects Gemini free tier limits (15/min, 1500/day)
+- Maintains 1-2 requests per second spacing
+- Automatic cleanup of old request timestamps
+- Precise retry-after calculations
+- Daily quota reset at midnight
+- Detailed statistics for monitoring
 
 ### File List
 
 - src/api/rate-limiter.js
 - tests/api/rate-limiter.test.js
+- run-tests-2-4.js

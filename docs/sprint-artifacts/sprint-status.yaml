@@ -38,15 +38,15 @@ story_location: docs/sprint-artifacts
 development_status:
   # EPIC 1: Foundation - Universal Detection Engine
   epic-1: contexted
-  1-1-implement-structural-scan-detection-layer: ready-for-dev
-  1-2-implement-pattern-matching-detection-layer: ready-for-dev
-  1-3-implement-context-analysis-detection-layer: ready-for-dev
-  1-4-implement-confidence-scoring-and-decision-logic: ready-for-dev
+  1-1-implement-structural-scan-detection-layer: review
+  1-2-implement-pattern-matching-detection-layer: review
+  1-3-implement-context-analysis-detection-layer: review
+  1-4-implement-confidence-scoring-and-decision-logic: review
   epic-1-retrospective: optional
 
   # EPIC 2: AI Integration & Caching - Answer Generation
   epic-2: contexted
-  2-1-implement-indexeddb-caching-system: ready-for-dev
+  2-1-implement-indexeddb-caching-system: review
   2-2-implement-gemini-api-integration: ready-for-dev
   2-3-implement-cache-first-answer-retrieval: ready-for-dev
   2-4-implement-rate-limiting-management: ready-for-dev
