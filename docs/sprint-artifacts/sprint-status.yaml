@@ -41,7 +41,7 @@ development_status:
   1-1-implement-structural-scan-detection-layer: review
   1-2-implement-pattern-matching-detection-layer: review
   1-3-implement-context-analysis-detection-layer: review
-  1-4-implement-confidence-scoring-and-decision-logic: ready-for-dev
+  1-4-implement-confidence-scoring-and-decision-logic: review
   epic-1-retrospective: optional
 
   # EPIC 2: AI Integration & Caching - Answer Generation

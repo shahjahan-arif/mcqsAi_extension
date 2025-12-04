@@ -1,14 +1,15 @@
 /**
  * Web Worker for Quiz Detection
- * Runs detection algorithm in parallel without blocking main thread
+ * Runs complete 4-layer detection algorithm in parallel without blocking main thread
  * 
  * Receives: DOM snapshot
- * Returns: Detection results (isQuiz, confidence, quizType, etc.)
+ * Returns: Complete DetectionResult with quiz determination
  */
 
 import { structuralScan } from '../detection/structural-scanner.js';
 import { patternMatching } from '../detection/pattern-matcher.js';
 import { contextAnalysis } from '../detection/context-analyzer.js';
+import { scoreAndDecide } from '../detection/scorer.js';
 
 /**
  * Handle messages from main thread
@@ -26,19 +27,24 @@ self.onmessage = (event) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(domSnapshot.html, 'text/html');
 
-    // Run detection layers
+    // Run all detection layers
     const structuralScore = structuralScan(doc);
     const patternScore = patternMatching(doc);
     const contextScore = contextAnalysis(doc);
 
-    // Send results back to main thread
+    // Combine scores and make decision
+    const scores = {
+      structural: structuralScore,
+      pattern: patternScore,
+      context: contextScore
+    };
+
+    const detectionResult = scoreAndDecide(scores, doc);
+
+    // Send complete result back to main thread
     self.postMessage({
       success: true,
-      scores: {
-        structural: structuralScore,
-        pattern: patternScore,
-        context: contextScore
-      },
+      result: detectionResult,
       timestamp: Date.now()
     });
   } catch (error) {
