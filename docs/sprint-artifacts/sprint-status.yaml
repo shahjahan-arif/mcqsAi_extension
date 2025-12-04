@@ -46,7 +46,7 @@ development_status:
 
   # EPIC 2: AI Integration & Caching - Answer Generation
   epic-2: contexted
-  2-1-implement-indexeddb-caching-system: ready-for-dev
+  2-1-implement-indexeddb-caching-system: review
   2-2-implement-gemini-api-integration: ready-for-dev
   2-3-implement-cache-first-answer-retrieval: ready-for-dev
   2-4-implement-rate-limiting-management: ready-for-dev
