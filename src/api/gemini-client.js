@@ -6,7 +6,7 @@
 import { APIError, TimeoutError, ParseError } from './errors.js';
 
 export const GEMINI_CONFIG = {
-  endpoint: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',
+  endpoint: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
   timeout: 5000,
   maxRetries: 2,
   retryDelays: [1000, 2000]
