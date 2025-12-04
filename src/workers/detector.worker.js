@@ -8,6 +8,7 @@
 
 import { structuralScan } from '../detection/structural-scanner.js';
 import { patternMatching } from '../detection/pattern-matcher.js';
+import { contextAnalysis } from '../detection/context-analyzer.js';
 
 /**
  * Handle messages from main thread
@@ -28,13 +29,15 @@ self.onmessage = (event) => {
     // Run detection layers
     const structuralScore = structuralScan(doc);
     const patternScore = patternMatching(doc);
+    const contextScore = contextAnalysis(doc);
 
     // Send results back to main thread
     self.postMessage({
       success: true,
       scores: {
         structural: structuralScore,
-        pattern: patternScore
+        pattern: patternScore,
+        context: contextScore
       },
       timestamp: Date.now()
     });
