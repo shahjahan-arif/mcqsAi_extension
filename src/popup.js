@@ -26,17 +26,39 @@ function initializePopup() {
   });
   
   // Button listeners
-  document.getElementById('detectBtn').addEventListener('click', detectQuiz);
-  document.getElementById('settingsBtn').addEventListener('click', showSettings);
-  document.getElementById('saveBtn').addEventListener('click', saveSettings);
-  document.getElementById('cancelBtn').addEventListener('click', hideSettings);
+  const detectBtn = document.getElementById('detectBtn');
+  const settingsBtn = document.getElementById('settingsBtn');
+  const saveBtn = document.getElementById('saveBtn');
+  const cancelBtn = document.getElementById('cancelBtn');
+  
+  if (detectBtn) detectBtn.addEventListener('click', detectQuiz);
+  if (settingsBtn) settingsBtn.addEventListener('click', showSettings);
+  if (saveBtn) saveBtn.addEventListener('click', saveSettings);
+  if (cancelBtn) cancelBtn.addEventListener('click', hideSettings);
 }
 
 function detectQuiz() {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    if (!tabs || !tabs[0]) {
+      alert('No active tab found');
+      return;
+    }
+    
     chrome.tabs.sendMessage(tabs[0].id, { type: 'DETECT_QUIZ' }, (response) => {
+      if (chrome.runtime.lastError) {
+        console.error('Error:', chrome.runtime.lastError);
+        const statusEl = document.getElementById('status');
+        statusEl.classList.add('error');
+        statusEl.innerHTML = `
+          <div class="status-label">Status</div>
+          <div class="status-value">❌ Content script not loaded</div>
+        `;
+        return;
+      }
+      
       const statusEl = document.getElementById('status');
-      if (response.isQuiz) {
+      if (response && response.isQuiz) {
+        statusEl.classList.remove('error');
         statusEl.innerHTML = `
           <div class="status-label">Status</div>
           <div class="status-value">✅ Quiz Detected!</div>
